@@ -7,6 +7,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpack from "webpack";
 import console_stamp from "console-stamp";
 import morgan from "morgan";
+import routes from "./routes";
 
 const webpackConfig = require('./../webpack.config.js');
 
@@ -46,6 +47,8 @@ server.get('/', (req: Request, res: Response) => {
     });
     res.send(content)
 });
+
+routes(server);
 
 server.listen(3000, () => {
     console.log('Server listening on port 3000');
