@@ -2,6 +2,6 @@ import React from 'react';
 import App from "./app";
 
 const Index = () => {
-    return (<><App/></>);
+    return (<>Hello world!!!</>);
 };
 export default Index
