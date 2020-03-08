@@ -38,7 +38,6 @@ server.use(function (req: Request, res: Response, next: NextFunction) {
 });
 server.use(express.static('public'));
 server.get('/', (req: Request, res: Response) => {
-    // res.json({mess: req.originalUrl || req.url});
     const page = renderToString(App());
 
     const content = template({
