@@ -37,6 +37,7 @@ server.use(function (req: Request, res: Response, next: NextFunction) {
     next();
 });
 server.use(express.static('public'));
+server.use(routes);
 server.get('/', (req: Request, res: Response) => {
     const page = renderToString(App());
 
@@ -46,8 +47,6 @@ server.get('/', (req: Request, res: Response) => {
     });
     res.send(content)
 });
-
-routes(server);
 
 server.listen(3000, () => {
     console.log('Server listening on port 3000');
