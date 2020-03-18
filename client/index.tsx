@@ -1,7 +1,9 @@
 import React from 'react';
-import App from "./app";
+import {Button} from "@material-ui/core";
 
 const Index = () => {
-    return (<>Hello world!!!</>);
+    return <Button variant="contained" color="primary">
+        Hello World
+    </Button>;
 };
 export default Index
