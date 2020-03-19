@@ -4,6 +4,8 @@ import {ThemeProvider} from '@material-ui/core/styles';
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import red from "@material-ui/core/colors/red";
 import {CssBaseline} from "@material-ui/core";
+import Body from "../src/components/Body";
+import AppMenu from "../src/components/AppMenuBar";
 // A custom theme for this app
 const theme = createMuiTheme({
     palette: {
@@ -25,7 +27,9 @@ const App = (): ReactElement => {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
-            <Index/>
+            <Body>
+                <AppMenu/>
+            </Body>
         </ThemeProvider>);
 };
 

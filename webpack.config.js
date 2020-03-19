@@ -7,7 +7,7 @@ module.exports = {
     context: __dirname,
     devtool: "source-map",
     resolve: {
-        extensions: ['.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js', 'index.ts', 'index.tsx']
     },
     // devServer: {
     //     hot: true,
@@ -30,6 +30,7 @@ module.exports = {
             }
         ]
     },
+
     plugins: [
         // new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),

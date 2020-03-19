@@ -18,6 +18,7 @@
     },
     "devDependencies": {
         "@material-ui/core": "^4.9.7",
+        "@material-ui/icons": "^4.9.1",
         "@types/bluebird": "^3.5.30",
         "@types/console-stamp": "^0.2.32",
         "@types/express": "^4.17.2",
