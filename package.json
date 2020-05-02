@@ -41,7 +41,10 @@
         "webpack-cli": "^3.3.10",
         "webpack-dev-middleware": "^3.7.2",
         "webpack-dev-server": "^3.10.1",
-        "webpack-hot-middleware": "latest"
+        "webpack-hot-middleware": "latest",
+        "react-redux": "^7.2.0",
+        "redux": "^4.0.5",
+        "@types/react-redux": "^7.1.7"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
