@@ -1,6 +1,5 @@
 import express, {Express, NextFunction, Request, Response} from 'express';
 import {renderToString} from 'react-dom/server';
-import App from '../client/app';
 import template from "../src/template";
 import webpackDevMiddleware, {Options} from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
@@ -8,6 +7,7 @@ import webpack from "webpack";
 import console_stamp from "console-stamp";
 import morgan from "morgan";
 import routes from "./routes";
+import AppServer from "../client/components/App/Server";
 
 const webpackConfig = require('./../webpack.config.js');
 
@@ -39,7 +39,7 @@ server.use(function (req: Request, res: Response, next: NextFunction) {
 server.use(express.static('public'));
 server.use(routes);
 server.get('/*', (req: Request, res: Response) => {
-    const page = renderToString(App());
+    const page = renderToString(AppServer({url: req.url}));
 
     const content = template({
         body: page,
