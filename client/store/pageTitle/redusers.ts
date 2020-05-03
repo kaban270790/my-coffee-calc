@@ -1,7 +1,8 @@
 import {PageTitleState, PageTitleTypes, SET_PAGE_TITLE} from "./types";
+import {TITLE_MAIN} from "../../components/AppMenuBar/items";
 
 const DEFAULT_STATE: PageTitleState = {
-    title: 'Главная страница'
+    title: TITLE_MAIN
 };
 
 export function pageTitleReducer(state: PageTitleState = DEFAULT_STATE, action: PageTitleTypes): PageTitleState {
