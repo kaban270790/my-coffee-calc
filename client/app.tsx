@@ -6,6 +6,7 @@ import {CssBaseline} from "@material-ui/core";
 import Body from "./components/Body";
 import AppMenu from "./components/AppMenuBar";
 import ReduxProvider from "./components/ReduxProvider";
+import Article from "./components/Article";
 // A custom theme for this app
 const theme = createMuiTheme({
     palette: {
@@ -30,6 +31,7 @@ const App = (): ReactElement => {
                 <CssBaseline/>
                 <Body>
                     <AppMenu/>
+                    <Article/>
                 </Body>
             </ThemeProvider>
         </ReduxProvider>);

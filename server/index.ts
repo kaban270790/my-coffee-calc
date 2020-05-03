@@ -38,7 +38,7 @@ server.use(function (req: Request, res: Response, next: NextFunction) {
 });
 server.use(express.static('public'));
 server.use(routes);
-server.get('/', (req: Request, res: Response) => {
+server.get('/*', (req: Request, res: Response) => {
     const page = renderToString(App());
 
     const content = template({

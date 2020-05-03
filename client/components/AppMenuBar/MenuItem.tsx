@@ -5,6 +5,7 @@ import SvgIcon from "@material-ui/icons/Home";
 import ListItemText from "@material-ui/core/ListItemText";
 import {withStyles} from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
+import {Link} from "react-router-dom";
 
 const StyledMenuItem = withStyles(theme => ({
     root: {
@@ -23,12 +24,18 @@ type MenuItemProps = {
 };
 
 export default React.forwardRef(({item, onSelect}: PropsWithRef<MenuItemProps>, ref) => {
+    let linkToPath = '/';
+    if (typeof item.route.path === 'string') {
+        linkToPath = item.route.path;
+    }
     return <StyledMenuItem>
         <ListItemIcon>
             <SvgIcon component={item.icon} fontSize="small"/>
         </ListItemIcon>
-        <ListItemText primary={item.title} onClick={() => {
-            onSelect(item);
-        }}/>
+        <Link to={{pathname: linkToPath}}>
+            <ListItemText primary={item.title} onClick={() => {
+                onSelect(item);
+            }}/>
+        </Link>
     </StyledMenuItem>
 })

@@ -7,7 +7,7 @@ module.exports = {
     context: __dirname,
     devtool: "source-map",
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', 'index.ts', 'index.tsx']
+        extensions: ['.ts', '.tsx', '.js', 'index.tsx', 'index.tsx']
     },
     // devServer: {
     //     hot: true,
