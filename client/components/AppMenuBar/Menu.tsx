@@ -6,8 +6,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import {useDispatch} from "react-redux";
 import menuItems from "./items";
 import MenuItem from "./MenuItem";
-import setPageTitle from "../../Redux/Actions/SetPageName";
 import {MenuItemType} from "./MenuItemType";
+import {setPageTitle} from "../../store/pageTitle/actions";
 
 const StyledMenu = withStyles({
     paper: {
