@@ -43,7 +43,7 @@ server.get('/*', (req: Request, res: Response) => {
 
     const content = template({
         body: page,
-        title: req.originalUrl || req.url
+        title: ''
     });
     res.send(content)
 });
