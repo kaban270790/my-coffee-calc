@@ -12,7 +12,7 @@ export default ({body = null, title = 'Page'}: { body: string | null, title: str
         <div id="root">${body}</div>
       </body>
 
-      <script src="assets/bundle.js"></script>
+      <script src="/assets/bundle.js"></script>
     </html>
   `);
 };

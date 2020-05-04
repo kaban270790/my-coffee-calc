@@ -4,6 +4,8 @@ import Resident from "../Resident";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {createStyles, Theme} from "@material-ui/core";
 import List from "@material-ui/core/List";
+import {Link} from "react-router-dom";
+import Button from "../Button";
 
 type PeoplePropsType = {
     list: ResidentType[],
@@ -14,15 +16,16 @@ const useStyles = makeStyles((theme: Theme) =>
             width: '100%',
             backgroundColor: theme.palette.background.default
         },
-        inline: {
-            display: 'inline',
-        },
+        link: {
+            textDecoration: 'none'
+        }
     }),
 );
 
 export default function People({list}: PeoplePropsType) {
     const classes = useStyles();
     return <>
+        <Link className={classes.link} to={'/people/create'}><Button color={"primary"}>Создать</Button></Link>
         <List className={classes.root}>
             {list.length > 0 ? list.map((resident) => <Resident key={resident.id} resident={resident}/>) : null}
         </List>
