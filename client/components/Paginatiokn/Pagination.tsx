@@ -9,7 +9,7 @@ type PaginationPropsType = {
 };
 export const LIMIT_DEFAULT = 10;
 export default function Pagination({page = 1, limit = LIMIT_DEFAULT, total, onClick}: PaginationPropsType) {
-    if (total < limit) {
+    if (total <= limit) {
         return null;
     }
     return <PaginationUI limit={limit} total={total} offset={((page - 1) * limit)} onClick={onClick}/>;

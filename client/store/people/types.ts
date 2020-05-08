@@ -1,25 +1,19 @@
+import {HouseType, ResidentInterface} from "../../typing/people";
+
 export const GET_LIST_PEOPLE = "GET_LIST_PEOPLE";
 export const GET_LIST_PEOPLE_SUCCESS = "GET_LIST_PEOPLE_SUCCESS";
 export const GET_LIST_PEOPLE_ERROR = "GET_LIST_PEOPLE_ERROR";
 export const GET_LIST_PEOPLE_LOADING = "GET_LIST_PEOPLE_LOADING";
-export type ResidentHomeType = 0 | 1 | 2 | 3 | 4 | 5;
-export type ResidentType = {
-    id: number,
-    user_name: string,
-    home: ResidentHomeType,
-    added_ts: Date,
-    deleted_ts: Date | null
-};
 export type ResidentResponseType = {
     id: number,
     user_name: string,
-    home: ResidentHomeType,
+    home: HouseType,
     added_ts: string,
     deleted_ts: string | null
 };
 
 export interface PeopleState {
-    list: ResidentType[];
+    list: ResidentInterface[];
     loading: boolean;
     count: number;
     total: number;
@@ -56,7 +50,7 @@ export interface PeopleListResponse {
 
 
 export interface PeopleList {
-    list: ResidentType[];
+    list: ResidentInterface[];
     count: number;
     total: number;
 }

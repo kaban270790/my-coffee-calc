@@ -10,7 +10,6 @@ type SwitchPropsType = {
 };
 
 function Switch({routes}: SwitchPropsType): ReactElement | null {
-    console.log(routes);
     return routes.length > 0 ? <SwitchReact>
         {routes.map((route, i) => (
             <RouteWithSubRoutes key={i} {...route} />
@@ -19,7 +18,6 @@ function Switch({routes}: SwitchPropsType): ReactElement | null {
 }
 
 function RouteWithSubRoutes(route: RouteConfig) {
-    console.log(route);
     const switchRoutes = <Switch routes={route.routes || []}/>;
     return (
         <Route

@@ -2,8 +2,8 @@ import React from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 type ProgressPropsType = {
-    progress: number
+    progress?: number
 };
 export default function Progress(props: ProgressPropsType) {
-    return <CircularProgress variant={"determinate"} value={props.progress}/>
+    return <CircularProgress value={props.progress}/>
 }

@@ -1,14 +1,14 @@
 import React from "react";
-import {ResidentType} from "../../store/people/types";
 import Resident from "../Resident";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {createStyles, Theme} from "@material-ui/core";
 import List from "@material-ui/core/List";
 import {Link} from "react-router-dom";
 import Button from "../Button";
+import {ResidentInterface} from "../../typing/people";
 
 type PeoplePropsType = {
-    list: ResidentType[],
+    list: ResidentInterface[],
 };
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({

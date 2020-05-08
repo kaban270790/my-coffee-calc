@@ -7,10 +7,11 @@ import {
     GetListPeopleSuccessAction,
     PeopleList,
     PeopleListResponse,
-    ResidentType
 } from "./types";
 import {isBrowser} from "../../../utils";
 import {Dispatch} from "redux";
+import {ResidentInterface} from "../../typing/people";
+import {convertHouseLevel} from "../../utils/resident";
 
 function fetchPeople(page?: number, limit?: number) {
     const params: string[] = [];
@@ -32,7 +33,6 @@ export function getListPeople(dispatch: Dispatch, page?: number, limit?: number)
     switch (true) {
         case isBrowser():
             dispatch(getListPeopleListLoading());
-            console.log(page, limit);
             getPromise = fetchPeople(page, limit);
             break;
         default:
@@ -40,10 +40,16 @@ export function getListPeople(dispatch: Dispatch, page?: number, limit?: number)
     }
     getPromise
         .then((json: PeopleListResponse) => {
-            const list: ResidentType[] = [];
+            const list: ResidentInterface[] = [];
             json.list?.forEach((resident) => {
+                let houseLevel = convertHouseLevel(resident.home);
+                if (!houseLevel) {
+                    houseLevel = 1;
+                }
                 list.push({
-                    ...resident,
+                    id: resident.id,
+                    name: resident.user_name,
+                    house_level: houseLevel,
                     added_ts: new Date(resident.added_ts),
                     deleted_ts: resident.deleted_ts ? new Date(resident.deleted_ts) : null
                 });
