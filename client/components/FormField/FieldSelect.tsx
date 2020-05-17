@@ -16,7 +16,8 @@ type FieldSelectPropsType = {
     label: string,
     required?: boolean,
     error?: boolean,
-    helperText?: string
+    helperText?: string,
+    disabled?: boolean,
 };
 
 export interface FieldSelectItemInterface {
@@ -36,8 +37,8 @@ export default function FieldSelect(props: FieldSelectPropsType) {
     }
     return <FormControl variant="filled"
                         error={props.error}
-                        fullWidth={true}>
-        <InputLabel required={props.required}>{props.label}</InputLabel>
+                        fullWidth={true} disabled={props.disabled}>
+        <InputLabel disabled={props.disabled} required={props.required}>{props.label}</InputLabel>
         <Select
             value={props.value}
             onChange={props.onChange}

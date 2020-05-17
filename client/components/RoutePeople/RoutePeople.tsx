@@ -21,7 +21,6 @@ const RoutePeople = (props: RouteConfigComponentProps) => {
         return state.people
     });
     const onChangePage = (event: MouseEvent<HTMLElement>, offset: number, page: number) => {
-        console.log(page);
         setPage(page);
     };
     return (<>

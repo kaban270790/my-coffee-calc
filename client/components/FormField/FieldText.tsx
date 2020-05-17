@@ -14,6 +14,7 @@ type FieldTextProps = {
     autoFocus?: boolean,
     onChange?: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>
     onBlur?: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>
+    disabled?: boolean
 };
 export default function FieldText(props: FieldTextProps) {
     return <TextField
