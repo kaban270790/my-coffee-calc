@@ -93,14 +93,6 @@ const ResidentForm = ({residentId}: ResidentFormPropsType) => {
         houseLevels[level] = level.toString();
     });
     return <>
-        <Grid container spacing={2}>
-            <Grid item xs={6}>
-                Редактирование жителя
-            </Grid>
-            <Grid item container xs={6} justify={"flex-end"}>
-                Назад к списку
-            </Grid>
-        </Grid>
         <Grid container justify={"center"} spacing={2}>
             <Grid item xs={10}>
                 <FieldText

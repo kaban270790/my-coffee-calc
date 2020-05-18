@@ -22,17 +22,20 @@ function RouteWithSubRoutes(route: RouteConfig) {
     return (
         <Route
             path={route.path}
-            render={props => (
-                route.component === undefined ? switchRoutes : <>
-                    <route.component {...props} />
-                    {switchRoutes}
-                </>
-            )}
+            render={props => {
+                return (
+                    route.component === undefined ? switchRoutes : <>
+                        <route.component {...props} />
+                        {switchRoutes}
+                    </>
+                );
+            }}
         />
     );
 }
 
 const Article = () => {
+    console.log(1);
     return <Switch routes={routes}/>;
 };
 export default Article;

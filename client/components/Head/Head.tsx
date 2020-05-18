@@ -1,15 +1,22 @@
-import React, {PropsWithChildren} from "react";
-import Helmet, {HelmetProps} from "react-helmet";
+import React, {PropsWithChildren, useEffect, useState} from "react";
+import Helmet from "react-helmet";
 import {useSelector} from "react-redux";
 import {AppState} from "../../store/types";
 
 type HeadPropsType = {};
 
 export default function Head(props: PropsWithChildren<HeadPropsType>) {
-    const pageTitle = useSelector((state: AppState) => {
-        return state.pageTitle.title;
+    const breadcrumbs = useSelector((state: AppState) => {
+        return state.breadcrumbs.list;
     });
+    const [title, setTitle] = useState('');
+    useEffect(() => {
+        const breadcrumb = breadcrumbs[breadcrumbs.length - 1];
+        if (breadcrumb) {
+            setTitle(breadcrumb.message);
+        }
+    }, [breadcrumbs]);
     return <Helmet>
-        <title>{pageTitle}</title>
+        <title>{title}</title>
     </Helmet>
 }

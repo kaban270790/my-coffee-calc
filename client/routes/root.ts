@@ -4,8 +4,9 @@ import home from "./root/home";
 import people from "./root/people";
 import events from "./root/events";
 
+export const PATH_ROOT = '/';
 const route: RouteConfig = {
-    path: '/',
+    path: PATH_ROOT,
     component: RouteHome,
     exact: true,
     routes: [
