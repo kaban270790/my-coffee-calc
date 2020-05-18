@@ -12,7 +12,7 @@ import {getResident, postResident} from "../../utils/api";
 import {Redirect} from 'react-router'
 import Progress from "../Progress";
 import {FormHelperText} from "@material-ui/core";
-import Alert from "../Alert/Alert";
+import {pushAlert} from "../../store/alert/actions";
 
 const DEFAULT_RESIDENT: ResidentNewInterface = {
     name: '',
@@ -45,7 +45,12 @@ const ResidentForm = ({residentId}: ResidentFormPropsType) => {
             }).then(() => {
                 setIsLoadData(false);
             }).catch((e: Error) => {
-                setMainError(e.message);
+                dispatch(pushAlert({
+                        message: e.message,
+                        type: "error",
+                        secondAutoClose: 5
+                    }
+                ));
             });
         }
     }, [residentId]);
@@ -76,7 +81,11 @@ const ResidentForm = ({residentId}: ResidentFormPropsType) => {
             })
             .catch((error) => {
                 setFetchSave(false);
-                setFormErrors({main: error.toString()});
+                dispatch(pushAlert({
+                    message: error.toString(),
+                    type: "error",
+                    secondAutoClose: 5
+                }))
             });
     }, [resident, isDisabledButton, isFetchSave, formErrors]);
     let houseLevels: FieldSelectItemInterface = {};
@@ -92,7 +101,6 @@ const ResidentForm = ({residentId}: ResidentFormPropsType) => {
                 Назад к списку
             </Grid>
         </Grid>
-        {mainError ? <Alert message={mainError}/> : null}
         <Grid container justify={"center"} spacing={2}>
             <Grid item xs={10}>
                 <FieldText

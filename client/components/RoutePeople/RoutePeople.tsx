@@ -6,7 +6,6 @@ import {TITLE_PEOPLE} from "../AppMenuBar/items";
 import {getListPeople} from "../../store/people/actions";
 import {AppState} from "../../store/types";
 import Progress from "../Progress";
-import Alert from "../Alert/Alert";
 import People from "../People";
 import Pagination from "../Paginatiokn";
 
@@ -24,7 +23,7 @@ const RoutePeople = (props: RouteConfigComponentProps) => {
         setPage(page);
     };
     return (<>
-        {storePeople.error ? <Alert message={storePeople.error}/> : null}
+        {/*{storePeople.error ? <Alert type={"error"} message={storePeople.error}/> : null}*/}
         {storePeople.loading ? <Progress progress={storePeople.loading ? 100 : 0}/> : null}
         <People list={storePeople.list}/>
         <Pagination total={storePeople.total} page={page} onClick={onChangePage}/>
