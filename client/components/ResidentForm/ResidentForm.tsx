@@ -79,6 +79,13 @@ const ResidentForm = ({residentId}: ResidentFormPropsType) => {
                     setFormErrors(response.errors);
                 }
             })
+            .then(() => {
+                dispatch(pushAlert({
+                    message: "Пользователь успешно сохранен",
+                    type: "success",
+                    secondAutoClose: 5
+                }))
+            })
             .catch((error) => {
                 setFetchSave(false);
                 dispatch(pushAlert({

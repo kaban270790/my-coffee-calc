@@ -35,7 +35,6 @@ function RouteWithSubRoutes(route: RouteConfig) {
 }
 
 const Article = () => {
-    console.log(1);
     return <Switch routes={routes}/>;
 };
 export default Article;
