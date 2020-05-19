@@ -3,7 +3,8 @@ import {ListItemText} from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import IconButton from "@material-ui/core/IconButton";
-import Delete from "@material-ui/icons/Delete";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 import {dateFormat} from "../../utils/date";
 import {ResidentInterface} from "../../typing/people";
 import {Link} from "react-router-dom";
@@ -13,6 +14,9 @@ import Progress from "../Progress";
 import {deleteResident} from "../../utils/api";
 import {pushAlert} from "../../store/alert/actions";
 import {useDispatch} from "react-redux";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import Avatar from "@material-ui/core/Avatar";
+import PersonIcon from '@material-ui/icons/PersonOutlineRounded';
 
 type ResidentPropsType = {
     resident: ResidentInterface,
@@ -35,7 +39,13 @@ export default function Resident({resident, onDelete}: ResidentPropsType) {
     if (isDeleting) {
         iconDelete = <Progress progress={100}/>;
     } else if (!resident.deleted_ts) {
-        iconDelete = <IconButton edge="end" aria-label="delete" onClick={handleClickOpen}><Delete/></IconButton>;
+        iconDelete = <IconButton edge="end" aria-label="delete" onClick={handleClickOpen}><DeleteIcon/></IconButton>;
+    }
+    let iconEdit = null;
+    if (!isDeleting && !resident.deleted_ts) {
+        iconEdit = <Link to={createPathResident(resident.id)}>
+            <IconButton edge="end" aria-label="edit"><EditIcon/></IconButton>
+        </Link>;
     }
 
     const removeResident = () => {
@@ -54,12 +64,21 @@ export default function Resident({resident, onDelete}: ResidentPropsType) {
     };
 
     return <>
-        <ListItem typeof={'button'}>
-            <ListItemText>{resident.id}</ListItemText>
-            <ListItemText><Link to={createPathResident(resident.id)}>{resident.name}</Link></ListItemText>
-            <ListItemText>{resident.house_level}</ListItemText>
-            <ListItemText>{dateFormat(resident.added_ts)}</ListItemText>
+        <ListItem divider={true}>
+            <ListItemAvatar>
+                <Avatar>
+                    <PersonIcon/>
+                </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary={resident.name}
+                          secondary={[
+                              `Домик: ${resident.house_level}`,
+                              `Дата добавления: ${dateFormat(resident.added_ts)}`,
+                              resident.deleted_ts ? `Удален: ${dateFormat(resident.deleted_ts)}` : null
+                          ].filter((text) => !!text).join(' | ')}
+            />
             <ListItemSecondaryAction>
+                {iconEdit}
                 {iconDelete}
                 {openConfirm ? <Confirm
                     open={true}
