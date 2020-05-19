@@ -1,6 +1,6 @@
 import {ControllerActionGet} from "../../typings/ControllerAction";
 import User from "../../models/User";
-import Instance from "../../models/User/Instance";
+import UserInstance from "../../models/User/UserInstance";
 import NotFound from "../Exceptions/NotFound";
 import HttpError from "../Exceptions/HttpError";
 
@@ -19,7 +19,7 @@ const action: ControllerActionGet = (req, res) => {
 
 
 export function getItem(id: number) {
-    return User.findById(id).then((instance): Instance => {
+    return User.findById(id).then((instance): UserInstance => {
         if (!instance) {
             throw new NotFound("User not found");
         }

@@ -1,4 +1,4 @@
-export default interface Attributes {
+export default interface UserAttributes {
     id?: number;
     user_name: string;
     home: number;

@@ -1,6 +1,6 @@
 import {FieldErrorsInterface, ResidentInterface, ResidentNewInterface} from "../typing/people";
 import {isBrowser} from "../../utils";
-import Instance from "../../server/models/User/Instance";
+import UserInstance from "../../server/models/User/UserInstance";
 import {convertHouseLevel} from "./resident";
 
 type postResidentResponseType = {
@@ -41,7 +41,7 @@ export function getResident(id: number) {
             return api(`/users/${id}`, {
                 method: 'GET'
             })
-                .then(async (res): Promise<Instance> => {
+                .then(async (res): Promise<UserInstance> => {
                     const json = await res.json();
                     if (res.status === 200) {
                         return json;
