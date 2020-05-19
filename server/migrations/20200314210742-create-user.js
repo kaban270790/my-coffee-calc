@@ -19,13 +19,13 @@ module.exports = {
                 defaultValue: 0,
             },
             added_ts: {
-                type: 'TIMESTAMP',
+                type: Sequelize.DATE,
                 allowNull: false,
-                defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+                defaultValue: Sequelize.NOW
             },
             deleted_ts: {
-                type: 'TIMESTAMP',
-                allowNull: true
+                type: Sequelize.DATE,
+                allowNull: true,
             }
         });
     },

@@ -23,11 +23,20 @@ const action: ControllerActionPost = (req, res) => {
 };
 
 export function getList(page: number, limit: number) {
-    return User.findAll({limit: limit, offset: ((page - 1) * limit)}).then((list) => {
-        return User.count().then((total) => {
-            return {list, total: total, count: list.length};
+    return User
+        .findAll({
+            limit: limit,
+            offset: ((page - 1) * limit),
+            order: [
+                'deleted_ts',
+                'id'
+            ]
         })
-    });
+        .then((list) => {
+            return User.count().then((total) => {
+                return {list, total: total, count: list.length};
+            })
+        });
 }
 
 export default action;

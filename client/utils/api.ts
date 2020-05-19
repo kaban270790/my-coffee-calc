@@ -28,6 +28,12 @@ export function postResident(resident: ResidentNewInterface) {
         });
 }
 
+export function deleteResident(residentId: number) {
+    return api(`/users/${residentId}`, {
+        method: 'DELETE'
+    });
+}
+
 
 export function getResident(id: number) {
     switch (true) {

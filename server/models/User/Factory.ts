@@ -23,6 +23,7 @@ const Factory = (sequelize: Sequelize, dataType: DataTypes) => {
         added_ts: {
             type: dataType.DATE,
             allowNull: false,
+            defaultValue: new Date()
         },
         deleted_ts: {
             type: dataType.DATE,
@@ -32,7 +33,9 @@ const Factory = (sequelize: Sequelize, dataType: DataTypes) => {
     return sequelize.define<Instance, Attributes>('User', attributes, {
         tableName: 'users',
         createdAt: 'added_ts',
-        updatedAt: false
+        updatedAt: false,
+        timestamps: true,
+        deletedAt: 'deleted_ts',
     });
 };
 export default Factory;
