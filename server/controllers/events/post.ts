@@ -1,5 +1,5 @@
 import {ControllerActionPost} from "../../typings/ControllerAction";
-import Event from '../../models/Event';
+import EventModel from '../../models/Event';
 
 type RequestEventType = { date_start: Date, date_end: Date };
 
@@ -26,7 +26,7 @@ const action: ControllerActionPost = (req, res) => {
         }
         resolve({date_start: new Date(date_start), date_end: new Date(date_end)});
     }).then((userData) => {
-        return Event
+        return EventModel
             .create({
                 date_start: userData.date_start,
                 date_end: userData.date_end,

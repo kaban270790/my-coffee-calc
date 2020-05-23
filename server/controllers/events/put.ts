@@ -1,5 +1,5 @@
 import {ControllerActionPost} from "../../typings/ControllerAction";
-import Event from '../../models/Event';
+import EventModel from '../../models/Event';
 
 type RequestEventType = { id: number, diamonds: number, crystals: number };
 
@@ -26,7 +26,7 @@ const action: ControllerActionPost = (req, res) => {
         }
         resolve({id: Number(req.params.id), diamonds, crystals});
     }).then(({id, diamonds, crystals}) => {
-        return Event
+        return EventModel
             .update({
                 diamonds: diamonds,
                 crystals: crystals
