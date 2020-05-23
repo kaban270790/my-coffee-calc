@@ -15,14 +15,17 @@ const action: ControllerActionPost = (req, res) => {
         const name = body.name;
         const house_level: HouseType = body.house_level;
         let errors: FieldErrorsInterface = {};
-        const hasError = false;
+        let hasError = false;
         if (name.length === 0) {
             errors.name = 'The name cannot be empty';
+            hasError = true;
         } else if (name.length < 2) {
             errors.name = 'The name cannot be shorter than 2 characters';
+            hasError = true;
         }
         if (!HOUSE_LEVELS.find(el => el === house_level)) {
             errors.house_level = 'The name cannot be shorter than 2 characters';
+            hasError = true;
         }
         if (hasError) {
             reject(errors);
