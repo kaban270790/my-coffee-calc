@@ -25,6 +25,14 @@ const EventUserFactory = (sequelize: Sequelize, dataType: DataTypes) => {
             type: dataType.INTEGER.UNSIGNED,
             allowNull: true
         },
+        paidTasks: {
+            type: dataType.TINYINT.UNSIGNED,
+            allowNull: true
+        },
+        tasks: {
+            type: dataType.TINYINT.UNSIGNED,
+            allowNull: true
+        },
         user: {
             type: dataType.INTEGER.UNSIGNED,
             references: {model: UserModel, key: 'id', deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE},

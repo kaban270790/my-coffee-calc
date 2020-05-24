@@ -3,6 +3,7 @@ import UserModel from "../../models/User";
 import EventUserModel from "../../models/EventUser";
 import EventModel from "../../models/Event";
 import EventInstance from "../../models/Event/EventInstance";
+import EventUserAttributes from "../../models/EventUser/EventUserAttributes";
 
 interface FieldErrorsInterface {
     [key: string]: string | undefined;
@@ -33,10 +34,12 @@ const action: ControllerActionPost = (req, res) => {
                 return {event, users};
             });
     }).then(({event, users}) => {
-        return EventUserModel.bulkCreate(users.map((user) => (
+        return EventUserModel.bulkCreate(users.map((user): EventUserAttributes => (
             {
                 user: Number(user.id),
                 event: Number(event.id),
+                tasks: null,
+                paidTasks: null,
                 cups: null,
                 diamonds: null,
                 crystals: null

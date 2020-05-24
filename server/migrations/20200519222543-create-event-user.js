@@ -21,6 +21,14 @@ module.exports = {
                 onUpdate: 'cascade',
                 onDelete: 'cascade'
             },
+            tasks: {
+                type: Sequelize.TINYINT.UNSIGNED,
+                allowNull: true
+            },
+            paidTasks: {
+                type: Sequelize.TINYINT.UNSIGNED,
+                allowNull: true
+            },
             cups: {
                 type: Sequelize.INTEGER.UNSIGNED,
                 allowNull: true
@@ -35,7 +43,7 @@ module.exports = {
             }
         }, {});
     },
-    down: (queryInterface, Sequelize) => {
+    down: (queryInterface) => {
         return queryInterface.dropTable(TABLE);
     }
 };
