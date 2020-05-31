@@ -11,6 +11,9 @@ sequelize
     .then(() => {
         console.log('Connection has been established successfully.');
     })
+    .then(() => {
+        return sequelize.query("SET NAMES UTF8");
+    })
     .catch(err => {
         console.error('Unable to connect to the database:', err);
     });
