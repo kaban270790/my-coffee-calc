@@ -45,7 +45,7 @@
         "awesome-typescript-loader": "^5.2.1",
         "console-stamp": "^0.2.9",
         "material-ui-flat-pagination": "^4.1.0",
-        "node-sass": "^4.13.0",
+        "node-sass": "^7.0.0",
         "react-hot-loader": "^4.12.18",
         "react-redux": "^7.2.0",
         "redux": "^4.0.5",
